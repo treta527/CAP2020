@@ -22,7 +22,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             double salida = TestGPU.excecute(52, 8.6);
-            logger.log(Level.INFO, "Salida: {0}", salida);
+            logger.log(Level.INFO, "Resultado suma: {0}", salida);
         } catch (IOException | CudaException ex) {
             logger.log(Level.SEVERE, "Error en calculo de suma - {0}", ex.getMessage());
         }
