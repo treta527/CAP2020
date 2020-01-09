@@ -5,8 +5,11 @@
  */
 package co.venko.poc.gpu;
 
+import co.venko.poc.gpu.service.TestGPU;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import jcuda.CudaException;
 
 /**
  *
@@ -17,6 +20,11 @@ public class Main {
     private static Logger logger = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) {
-        logger.log(Level.INFO, "Hola Mundo!");
+        try {
+            double salida = TestGPU.excecute(52, 8.6);
+            logger.log(Level.INFO, "Salida: {0}", salida);
+        } catch (IOException | CudaException ex) {
+            logger.log(Level.SEVERE, "Error en calculo de suma - {0}", ex.getMessage());
+        }
     }
 }
